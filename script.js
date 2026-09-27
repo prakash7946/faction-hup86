@@ -675,10 +675,11 @@ async function sendWhatsAppBackend(orderData) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(orderData)
     });
+    if (!response.ok) return false;
     const result = await response.json();
     return result.success === true;
   } catch (err) {
-    console.warn('WhatsApp backend notification failed:', err.message);
+    console.warn('WhatsApp backend notification skipped:', err.message);
     return false;
   }
 }
@@ -694,16 +695,17 @@ async function sendOrderEmail(orderData) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(orderData)
     });
+    if (!response.ok) return false;
     const result = await response.json();
     if (result.success) {
       console.log('✅ Order email sent successfully! Order ID:', orderData.orderId);
       return true;
     } else {
-      console.error('❌ Email server error:', result.error);
+      console.warn('Email server returned status:', result.error);
       return false;
     }
   } catch (err) {
-    console.error('❌ Could not reach email server:', err.message);
+    console.warn('Could not reach email server:', err.message);
     return false;
   }
 }

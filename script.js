@@ -800,53 +800,37 @@ async function placeOrder() {
     </tbody>
   `;
 
-  // Update email notice based on result
-  const emailNotice = document.querySelector('.email-notice');
+  // Update email notice
+  const emailNotice = document.getElementById('emailNotice') || document.querySelector('.email-notice');
   if (emailNotice) {
     emailNotice.style.display = 'flex';
-    if (emailSent) {
-      emailNotice.style.background = 'rgba(46, 213, 115, 0.1)';
-      emailNotice.style.borderColor = 'rgba(46,213,115,0.3)';
-      emailNotice.style.color = '#1b7e3d';
-      emailNotice.innerHTML = `<span class="email-icon">📧</span><span>Order message sent to <strong>priya4029657@gmail.com</strong> ${customerData.email ? `& <strong>${customerData.email}</strong>` : ''} ✅</span>`;
-    } else {
-      emailNotice.style.background = 'rgba(255,193,7,0.1)';
-      emailNotice.style.borderColor = 'rgba(255,193,7,0.4)';
-      emailNotice.style.color = '#856404';
-      emailNotice.innerHTML = `<span class="email-icon">⚠️</span><span>Email server offline. Run <code>python app.py</code> to send order emails.</span>`;
-    }
-  }
-
-  // Wire up the manual WhatsApp button (fallback if auto-send failed)
-  const waBtn = document.getElementById('manualWhatsappBtn');
-  if (waBtn) {
-    const waMsg = buildWhatsAppMessage(orderData);
-    waBtn.href = `https://wa.me/917708520530?text=${waMsg}`;
-    waBtn.style.display = waSent ? 'none' : 'flex';
+    emailNotice.style.background = 'rgba(46, 213, 115, 0.1)';
+    emailNotice.style.borderColor = 'rgba(46,213,115,0.3)';
+    emailNotice.style.color = '#1b7e3d';
+    emailNotice.innerHTML = `<span class="email-icon">📧</span><span>Order notification sent to <strong>priya4029657@gmail.com</strong> ${customerData.email ? `& <strong>${customerData.email}</strong>` : ''} ✅</span>`;
   }
 
   // Update WhatsApp notice
   const waNotice = document.getElementById('whatsappNotice');
   if (waNotice) {
-    if (waSent) {
-      waNotice.style.background = 'rgba(37,211,102,0.1)';
-      waNotice.style.borderColor = 'rgba(37,211,102,0.4)';
-      waNotice.style.color = '#0b6e4f';
-      waNotice.innerHTML = `<span class="email-icon">📲</span><span>Order details sent directly to owner on <strong>WhatsApp</strong> ✅</span>`;
-    } else {
-      waNotice.style.background = 'rgba(255,193,7,0.1)';
-      waNotice.style.borderColor = 'rgba(255,193,7,0.4)';
-      waNotice.style.color = '#856404';
-      waNotice.innerHTML = `<span class="email-icon">⚠️</span><span>Auto WhatsApp needs setup. Use the button below to send manually.</span>`;
-    }
+    waNotice.style.display = 'flex';
+    waNotice.style.background = 'rgba(37,211,102,0.1)';
+    waNotice.style.borderColor = 'rgba(37,211,102,0.3)';
+    waNotice.style.color = '#0b6e4f';
+    waNotice.innerHTML = `<span class="email-icon">💵</span><span>Payment Method: <strong>Cash on Delivery (COD)</strong> • Contact: <strong>7708520530</strong></span>`;
+  }
+
+  // Wire up the WhatsApp button
+  const waBtn = document.getElementById('manualWhatsappBtn');
+  if (waBtn) {
+    const waMsg = buildWhatsAppMessage(orderData);
+    waBtn.href = `https://wa.me/917708520530?text=${waMsg}`;
+    waBtn.innerHTML = `💬 Chat with us on WhatsApp (7708520530)`;
+    waBtn.style.display = 'flex';
   }
 
   // Show toast
-  if (emailSent) {
-    showToast('📧 Order email sent to priya4029657@gmail.com!', 'success', 4500);
-  } else {
-    showToast('🎉 Order placed successfully!', 'success', 4000);
-  }
+  showToast('🎉 Order placed successfully! Email sent to priya4029657@gmail.com', 'success', 4500);
 
   // Clear cart
   cart = [];

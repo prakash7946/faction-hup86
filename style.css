@@ -1237,7 +1237,7 @@ input, select, textarea { font-family: inherit; }
 }
 .confirm-details p { padding: 4px 0; color: var(--text-muted); }
 .confirm-details strong { color: var(--text); }
-.email-notice {
+.email-notice, .whatsapp-notice {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1245,9 +1245,15 @@ input, select, textarea { font-family: inherit; }
   background: rgba(46, 213, 115, 0.1);
   border: 1px solid rgba(46,213,115,0.3);
   padding: 12px 20px;
-  border-radius: 50px;
-  font-size: 0.82rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
   color: #1b7e3d;
+  margin-bottom: 12px;
+}
+.whatsapp-notice {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #0b6e4f;
   margin-bottom: 24px;
 }
 .summary-table-wrapper { text-align: left; margin-bottom: 28px; }

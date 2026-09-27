@@ -647,7 +647,8 @@ function buildWhatsAppMessage(orderData) {
     `Subtotal: ${formatPrice(subtotal)}%0A` +
     `Shipping: ${shipping === 0 ? 'FREE \ud83c\udf89' : formatPrice(shipping)}%0A` +
     `*TOTAL: ${formatPrice(total)}*%0A%0A` +
-    `\ud83d\udcb3 Payment via GPay/PhonePe/Paytm to 9344709406%0A` +
+    `\ud83d\udcb5 *Payment Method:* Cash on Delivery (COD)%0A` +
+    `\ud83d\udcde *Store Contact:* 7708520530%0A` +
     `\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501`;
   return msg;
 }
@@ -657,7 +658,7 @@ function buildWhatsAppMessage(orderData) {
  * Uses wa.me link — works on mobile (opens app) and desktop (opens WhatsApp Web).
  */
 function notifyOwnerWhatsApp(orderData) {
-  const OWNER_PHONE = '919344709406'; // India +91
+  const OWNER_PHONE = '917708520530'; // India +91
   const message = buildWhatsAppMessage(orderData);
   const url = `https://wa.me/${OWNER_PHONE}?text=${message}`;
   window.open(url, '_blank');
@@ -682,16 +683,39 @@ async function sendWhatsAppBackend(orderData) {
   }
 }
 
-// Email notifications removed — orders go to owner WhatsApp only.
+/**
+ * Send real order confirmation email via Flask backend to priya4029657@gmail.com.
+ * Calls POST /send-order-email with the full order payload.
+ */
+async function sendOrderEmail(orderData) {
+  try {
+    const response = await fetch(`${API_BASE}/send-order-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    });
+    const result = await response.json();
+    if (result.success) {
+      console.log('✅ Order email sent successfully! Order ID:', orderData.orderId);
+      return true;
+    } else {
+      console.error('❌ Email server error:', result.error);
+      return false;
+    }
+  } catch (err) {
+    console.error('❌ Could not reach email server:', err.message);
+    return false;
+  }
+}
 
-/** Place order - final step (calls real email API) */
+/** Place order - final step (calls real email API & WhatsApp) */
 async function placeOrder() {
   const btn = document.getElementById('placeOrderBtn');
   btn.disabled = true;
   btn.querySelector('#placeOrderText').textContent = '⏳ Processing...';
 
   // Small UX delay so the user sees the loading state
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 800));
 
   const subtotal = getSubtotal();
   const shipping = subtotal >= 999 ? 0 : 99;
@@ -718,14 +742,18 @@ async function placeOrder() {
     total
   };
 
-  // --- Send WhatsApp DIRECTLY to owner via CallMeBot ---
-  btn.querySelector('#placeOrderText').textContent = '📲 Sending WhatsApp to owner...';
+  // --- Send email to priya4029657@gmail.com ---
+  btn.querySelector('#placeOrderText').textContent = '📧 Sending order email...';
+  const emailSent = await sendOrderEmail(orderData);
+
+  // --- Send WhatsApp to owner via CallMeBot ---
+  btn.querySelector('#placeOrderText').textContent = '📲 Sending notification...';
   const waSent = await sendWhatsAppBackend(orderData);
 
-  // --- Show confirmation screen regardless ---
+  // --- Show confirmation screen ---
   showStep(3);
   document.getElementById('orderId').textContent = orderId;
-  document.getElementById('confirmEmail').textContent = customerData.phone;
+  document.getElementById('confirmEmail').textContent = customerData.email ? `${customerData.email} & priya4029657@gmail.com` : 'priya4029657@gmail.com';
 
   document.getElementById('confirmDetails').innerHTML = `
     <p>👤 <strong>${customerData.name}</strong></p>
@@ -733,7 +761,8 @@ async function placeOrder() {
     <p>📧 <strong>${customerData.email}</strong></p>
     <p>📍 <strong>${customerData.address}, ${customerData.city} - ${customerData.pin}</strong></p>
     <p>📅 <strong>${orderData.date}</strong></p>
-    <p>💳 Pay via Phone: <strong>9344709406</strong></p>
+    <p>💵 Payment Method: <strong>Cash on Delivery (COD)</strong></p>
+    <p>📞 Store Contact: <strong>7708520530</strong></p>
   `;
 
   // Summary table (with product image thumbnails)
@@ -771,16 +800,28 @@ async function placeOrder() {
     </tbody>
   `;
 
-  // Hide email notice (no longer used)
+  // Update email notice based on result
   const emailNotice = document.querySelector('.email-notice');
-  if (emailNotice) emailNotice.style.display = 'none';
+  if (emailNotice) {
+    emailNotice.style.display = 'flex';
+    if (emailSent) {
+      emailNotice.style.background = 'rgba(46, 213, 115, 0.1)';
+      emailNotice.style.borderColor = 'rgba(46,213,115,0.3)';
+      emailNotice.style.color = '#1b7e3d';
+      emailNotice.innerHTML = `<span class="email-icon">📧</span><span>Order message sent to <strong>priya4029657@gmail.com</strong> ${customerData.email ? `& <strong>${customerData.email}</strong>` : ''} ✅</span>`;
+    } else {
+      emailNotice.style.background = 'rgba(255,193,7,0.1)';
+      emailNotice.style.borderColor = 'rgba(255,193,7,0.4)';
+      emailNotice.style.color = '#856404';
+      emailNotice.innerHTML = `<span class="email-icon">⚠️</span><span>Email server offline. Run <code>python app.py</code> to send order emails.</span>`;
+    }
+  }
 
   // Wire up the manual WhatsApp button (fallback if auto-send failed)
   const waBtn = document.getElementById('manualWhatsappBtn');
   if (waBtn) {
     const waMsg = buildWhatsAppMessage(orderData);
-    waBtn.href = `https://wa.me/919344709406?text=${waMsg}`;
-    // Show manual button only if direct send failed
+    waBtn.href = `https://wa.me/917708520530?text=${waMsg}`;
     waBtn.style.display = waSent ? 'none' : 'flex';
   }
 
@@ -801,7 +842,11 @@ async function placeOrder() {
   }
 
   // Show toast
-  showToast('📲 Order sent to owner on WhatsApp!', 'success', 4000);
+  if (emailSent) {
+    showToast('📧 Order email sent to priya4029657@gmail.com!', 'success', 4500);
+  } else {
+    showToast('🎉 Order placed successfully!', 'success', 4000);
+  }
 
   // Clear cart
   cart = [];

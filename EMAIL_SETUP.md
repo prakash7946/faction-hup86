@@ -1,45 +1,30 @@
 # 📧 Email Setup Guide — april-86 Dress Store
 
-## Step 1: Get Your Gmail App Password
-
-Google requires an **App Password** (not your regular Gmail password) for sending emails via SMTP.
-
-### How to create a Gmail App Password:
-
-1. Go to [myaccount.google.com](https://myaccount.google.com)
-2. Click **Security** in the left sidebar
-3. Under "How you sign in to Google", click **2-Step Verification** and enable it (if not already)
-4. After enabling, scroll down and click **App passwords**
-5. Click **Select app** → choose **Mail**
-6. Click **Select device** → choose **Windows Computer**
-7. Click **Generate**
-8. Google will show you a **16-character password** like: `xxxx xxxx xxxx xxxx`
-9. Copy it (without spaces)
+## Overview
+- **Order Notification Email**: `priya4029657@gmail.com`
+- **Store Contact / WhatsApp**: `+91 77085 20530`
+- **Payment Method**: Cash on Delivery (COD)
 
 ---
 
-## Step 2: Add the App Password to app.py
+## Step 1: Gmail App Password Configuration
 
-Open `.env` (create the file if it doesn't exist) and set your App Password:
+Google requires an **App Password** for sending emails via SMTP.
 
+Your credentials in `.env`:
 ```env
-SENDER_PASSWORD="YOUR_APP_PASSWORD_HERE"
-```
-
-Then in `app.py` this will be loaded automatically via `dotenv`.
-
-Replace `YOUR_APP_PASSWORD_HERE` with your 16-character App Password.
-
-**Example:**
-```python
-SENDER_PASSWORD = "abcdabcdabcdabcd"
+SENDER_EMAIL="april86shop@gmail.com"
+SENDER_PASSWORD="lgha qlyf swss maoz"
+RECEIVER_EMAIL="priya4029657@gmail.com"
+OWNER_WHATSAPP="917708520530"
+STORE_PHONE="7708520530"
 ```
 
 ---
 
-## Step 3: Run the Backend Server
+## Step 2: Run the Backend Server
 
-Open a terminal in `D:\python project 1\` and run:
+Open a terminal in the project directory (`d:\april-86`) and run:
 
 ```bash
 python app.py
@@ -51,33 +36,32 @@ You should see:
   ✦ ELEGANCE DRESS STORE — Backend Server
 ==================================================
   🌐 Open: http://localhost:5000
-  📧 Email: april86shop@gmail.com
+  📧 Receiver Email: priya4029657@gmail.com
+  📲 WhatsApp: 917708520530
 ==================================================
 ```
 
 ---
 
-## Step 4: Open the Website
+## Step 3: Open the Website
 
 With the server running, open: **http://localhost:5000**
 
-> ⚠️ Do NOT open `index.html` directly as a file anymore.  
-> Always use `http://localhost:5000` so the email API works.
-
 ---
 
-## How It Works
+## How Order Emails Work
 
 ```
-Customer clicks "Place Order"
+Customer clicks "Place Order" (Cash on Delivery)
         ↓
 Browser sends order data to http://localhost:5000/send-order-email
         ↓
-Flask server receives the order details
+Flask server receives customer & product details
         ↓
-Python sends a beautiful HTML email via Gmail SMTP
+Python sends a formatted HTML email via Gmail SMTP
         ↓
-Email arrives in april86shop@gmail.com inbox 📬
+Order notification arrives in priya4029657@gmail.com 📬
+(Confirmation is also sent to the customer if email was provided)
 ```
 
 ---
@@ -86,7 +70,6 @@ Email arrives in april86shop@gmail.com inbox 📬
 
 | Problem | Solution |
 |---------|----------|
-| "Authentication failed" | Check your App Password is correct in app.py |
-| "Connection refused" | Make sure `python app.py` is running |
-| "Less secure app" error | Use App Password, NOT your Gmail password |
-| Email goes to spam | Add the sender to your contacts |
+| "Authentication failed" | Check that your 16-character Gmail App Password in `.env` is active |
+| "Connection refused" | Make sure `python app.py` is running in your terminal |
+| Email in Spam folder | Check Spam/Junk folder and mark as "Not Spam" |

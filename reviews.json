@@ -1,0 +1,49 @@
+[
+  {
+    "id": "rv_1790781169983",
+    "name": "sivapriya",
+    "location": "nellai",
+    "rating": 1,
+    "text": "good very nice happy shopping",
+    "product": "dress",
+    "user_id": null,
+    "created_at": "2026-09-30T20:42:49.994822Z"
+  },
+  {
+    "id": "rv_1790781010",
+    "name": "Siva Prakash",
+    "location": "Nellai",
+    "rating": 5,
+    "text": "Superb quality sarees and fast doorstep delivery! Very satisfied.",
+    "product": "",
+    "user_id": null,
+    "created_at": "2026-09-30T20:40:10.944808Z"
+  },
+  {
+    "id": "rv_seed_1",
+    "name": "Priya Sharma",
+    "location": "Mumbai",
+    "rating": 5,
+    "text": "The floral maxi dress I ordered is absolutely stunning! The fabric quality is incredible and it fits perfectly. Will definitely order again!",
+    "product": "Blossom Floral Maxi Dress",
+    "created_at": "2026-09-28T14:20:00Z"
+  },
+  {
+    "id": "rv_seed_2",
+    "name": "Anusha Reddy",
+    "location": "Hyderabad",
+    "rating": 5,
+    "text": "Fast delivery and beautiful packaging! The red evening gown looked even better in person. Received so many compliments at the party!",
+    "product": "Velvet Rouge Evening Gown",
+    "created_at": "2026-09-29T11:45:00Z"
+  },
+  {
+    "id": "rv_seed_3",
+    "name": "Sunita Patel",
+    "location": "Bangalore",
+    "rating": 4,
+    "text": "Great variety and affordable prices compared to other stores. The blue midi dress is my new favourite! Customer service was very helpful too.",
+    "product": "Azure Midi A-Line Dress",
+    "created_at": "2026-09-30T09:15:00Z"
+  }
+]

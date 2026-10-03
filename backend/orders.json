@@ -1,0 +1,293 @@
+[
+  {
+    "order_id": "ELG-MUO6NE3H-VJAS",
+    "user_id": "usr_siva_001",
+    "customer": {
+      "user_id": "usr_siva_001",
+      "name": "Siva",
+      "email": "sivaprakash2004@zohomail.in",
+      "phone": "9344709406",
+      "address": "ricemill street, nellai - 789787",
+      "city": "nellai",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "id": 6,
+        "name": "Emerald Drape Wrap Dress",
+        "price": 2350,
+        "image": "images/dress_6.png",
+        "size": "L",
+        "qty": 1
+      }
+    ],
+    "subtotal": 2350,
+    "shipping": 0,
+    "total": 2350,
+    "payment_method": "Cash on Delivery (COD)",
+    "payment_status": "Pending",
+    "order_status": "Processing",
+    "created_at": "2026-09-30T14:10:45.781Z"
+  },
+  {
+    "order_id": "ELG-MUO6656D-WL8T",
+    "user_id": "usr_siva_001",
+    "customer": {
+      "user_id": "usr_siva_001",
+      "address": "ricemill street, nellai - 627417",
+      "city": "nellai",
+      "email": "sivaprakash2004@zohomail.in",
+      "name": "Siva",
+      "phone": "9344709406",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "id": 22,
+        "image": "images/camera.png",
+        "name": "ProLens 4K Digital Cinema Camera",
+        "price": 38999,
+        "qty": 1,
+        "size": "Body Only"
+      }
+    ],
+    "order_status": "Delivered",
+    "payment_method": "Cash on Delivery (COD)",
+    "payment_status": "Pending",
+    "shipping": 0,
+    "subtotal": 38999,
+    "total": 38999,
+    "created_at": "2026-09-30T13:57:22.388Z"
+  },
+  {
+    "order_id": "ELG-MUO631Z6-7N3J",
+    "user_id": "usr_siva_001",
+    "customer": {
+      "user_id": "usr_siva_001",
+      "address": "ricemill street, nellai - 627417",
+      "city": "nellai",
+      "email": "sivaprakash2004@zohomail.in",
+      "name": "siva",
+      "phone": "9344709406",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "id": 2,
+        "image": "images/dress_2.png",
+        "name": "Velvet Rouge Evening Gown",
+        "price": 3499,
+        "qty": 1,
+        "size": "L"
+      }
+    ],
+    "order_status": "Processing",
+    "payment_method": "Cash on Delivery (COD)",
+    "payment_status": "Pending",
+    "shipping": 0,
+    "subtotal": 3499,
+    "total": 3499,
+    "created_at": "2026-09-30T13:54:57.167Z"
+  },
+  {
+    "order_id": "ORD-2026-8801",
+    "user_id": "usr_ananya_001",
+    "customer": {
+      "user_id": "usr_ananya_001",
+      "address": "42, Gandhi Road, T. Nagar, Chennai - 600017",
+      "city": "Chennai",
+      "email": "ananya.sharma@gmail.com",
+      "name": "Ananya Sharma",
+      "phone": "+91 98410 23456",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "category": "saree",
+        "id": 13,
+        "image": "images/saree_1.png",
+        "name": "Kanchipuram Pure Silk Bridal Saree",
+        "price": 6499,
+        "qty": 1,
+        "size": "Free Size"
+      },
+      {
+        "category": "accessories",
+        "id": 17,
+        "image": "images/watch.png",
+        "name": "Apex Pro Luxury Smartwatch",
+        "price": 4499,
+        "qty": 1,
+        "size": "One Size"
+      }
+    ],
+    "order_status": "Delivered",
+    "payment_method": "UPI / GPay",
+    "payment_status": "Paid",
+    "shipping": 0,
+    "subtotal": 10998,
+    "total": 10998,
+    "created_at": "2026-09-28T10:15:30Z"
+  },
+  {
+    "order_id": "ORD-2026-8802",
+    "user_id": "usr_rajesh_001",
+    "customer": {
+      "user_id": "usr_rajesh_001",
+      "address": "15, Cross Cut Road, Gandhipuram, Coimbatore - 641012",
+      "city": "Coimbatore",
+      "email": "rajesh.kumar92@yahoo.com",
+      "name": "Rajesh Kumar",
+      "phone": "+91 94432 78901",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "category": "saree",
+        "id": 16,
+        "image": "images/saree_4.png",
+        "name": "Golden Temple Kanchi Pattu Saree",
+        "price": 7999,
+        "qty": 1,
+        "size": "Free Size"
+      }
+    ],
+    "order_status": "Delivered",
+    "payment_method": "Credit Card",
+    "payment_status": "Paid",
+    "shipping": 0,
+    "subtotal": 7999,
+    "total": 7999,
+    "created_at": "2026-09-29T14:22:10Z"
+  },
+  {
+    "order_id": "ORD-2026-8803",
+    "user_id": "usr_meera_001",
+    "customer": {
+      "user_id": "usr_meera_001",
+      "address": "88, West Masi Street, Madurai - 625001",
+      "city": "Madurai",
+      "email": "meera.v@outlook.com",
+      "name": "Meera Venkat",
+      "phone": "+91 97890 12345",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "category": "saree",
+        "id": 14,
+        "image": "images/saree_2.png",
+        "name": "Madurai Sungudi Peacock Blue Saree",
+        "price": 2499,
+        "qty": 2,
+        "size": "Free Size"
+      },
+      {
+        "category": "tshirt",
+        "id": 12,
+        "image": "images/tshirt_4.png",
+        "name": "Classic Navy Stripe Tee",
+        "price": 749,
+        "qty": 1,
+        "size": "L"
+      }
+    ],
+    "order_status": "Delivered",
+    "payment_method": "Cash on Delivery",
+    "payment_status": "Pending",
+    "shipping": 0,
+    "subtotal": 5747,
+    "total": 5747,
+    "created_at": "2026-09-30T09:40:00Z"
+  },
+  {
+    "order_id": "ORD-2026-8804",
+    "user_id": "usr_suresh_001",
+    "customer": {
+      "user_id": "usr_suresh_001",
+      "address": "12, 100 Feet Road, Indiranagar, Bengaluru - 560038",
+      "city": "Bengaluru",
+      "email": "suresh.r@gmail.com",
+      "name": "Suresh Raina",
+      "phone": "+91 91234 56789",
+      "state": "Karnataka"
+    },
+    "items": [
+      {
+        "category": "saree",
+        "id": 15,
+        "image": "images/saree_3.png",
+        "name": "Chettinad Heritage Cotton Saree",
+        "price": 1999,
+        "qty": 1,
+        "size": "Free Size"
+      }
+    ],
+    "order_status": "Processing",
+    "payment_method": "UPI / PhonePe",
+    "payment_status": "Paid",
+    "shipping": 99,
+    "subtotal": 1999,
+    "total": 2098,
+    "created_at": "2026-09-30T11:18:45Z"
+  },
+  {
+    "order_id": "ELG-MUNZIG8L-9EHQ",
+    "user_id": "usr_siva_001",
+    "customer": {
+      "user_id": "usr_siva_001",
+      "address": "ricemill street, nellai - 627417",
+      "city": "nellai",
+      "email": "sivaprakash2004@zohomail.in",
+      "name": "Prakash",
+      "phone": "9344709406",
+      "state": "Tamil Nadu"
+    },
+    "items": [
+      {
+        "id": 3,
+        "image": "images/dress_3.png",
+        "name": "Azure Midi A-Line Dress",
+        "price": 2199,
+        "qty": 1,
+        "size": "L"
+      }
+    ],
+    "order_status": "Delivered",
+    "payment_method": "Cash on Delivery (COD)",
+    "payment_status": "Pending",
+    "shipping": 0,
+    "subtotal": 2199,
+    "total": 2199,
+    "created_at": "2026-09-30T10:50:56.408Z"
+  },
+  {
+    "order_id": "ORD-2026-9901",
+    "user_id": "usr_deepa_001",
+    "customer": {
+      "user_id": "usr_deepa_001",
+      "address": "12 Anna Salai, Chennai - 600002",
+      "city": "Chennai",
+      "email": "deepa.krishnan@gmail.com",
+      "name": "Deepa Krishnan",
+      "phone": "9876543210"
+    },
+    "items": [
+      {
+        "id": 1,
+        "image": "images/dress_1.png",
+        "name": "Blossom Floral Maxi Dress",
+        "price": 1899,
+        "qty": 1,
+        "size": "L"
+      }
+    ],
+    "order_status": "Delivered",
+    "payment_method": "Cash on Delivery (COD)",
+    "payment_status": "Pending",
+    "shipping": 0,
+    "subtotal": 1899,
+    "total": 1899,
+    "created_at": "2026-09-27T08:30:00Z"
+  }
+]

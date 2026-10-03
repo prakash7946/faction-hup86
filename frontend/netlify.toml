@@ -1,0 +1,17 @@
+# Netlify Configuration for april-86 Frontend
+[build]
+  publish = "."
+
+# Optional: You can proxy /api calls directly to your Render backend by replacing YOUR-APP:
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://YOUR-APP.onrender.com/api/:splat"
+#   status = 200
+#   force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,3 +1,19 @@
+# Environment variables (NEVER commit to GitHub)
 .env
+backend/.env
+*.env
+!.env.example
+!backend/.env.example
+
+# Python
 __pycache__/
+backend/__pycache__/
+*.py[cod]
+*$py.class
 .venv/
+venv/
+ENV/
+
+# System files
+.DS_Store
+Thumbs.db
